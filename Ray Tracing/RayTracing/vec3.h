@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <iostream>
+#include "rtweekend.h"
 
 using std::sqrt;
 
@@ -44,7 +45,12 @@ public:
     double length_squared() const {
         return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
     }
+    inline static vec3 random();
+	
 
+    inline static vec3 random(double min, double max);
+
+  
 public:
     double e[3];
 };
@@ -98,5 +104,8 @@ inline vec3 cross(const vec3& u, const vec3& v) {
 inline vec3 unit_vector(vec3 v) {
     return v / v.length();
 }
+inline vec3 random_in_unit_sphere();
+
+vec3 random_unit_vector();
 
 #endif
