@@ -1,11 +1,11 @@
 #include "color.h"
 #include "ray.h"
-#include "vec3.h"
+//#include "vec3.h"
 
 #include <iostream>
 #include "rtweekend.h"
 
-#include "color.h"
+//#include "color.h"
 #include "hittable_list.h"
 #include "sphere.h"
 #include "camera.h"
@@ -26,11 +26,24 @@ double hit_sphere(const point3& center, double radius, const ray& r) {
     }
 }
 
+//color ray_color(const ray& r, const hittable& world) {
+//    hit_record rec;
+//    if (world.hit(r, 0, infinity, rec)) {
+//        return 0.5 * (rec.normal + color(1, 1, 1));
+//    }
+//    vec3 unit_direction = unit_vector(r.direction());
+//    auto t = 0.5 * (unit_direction.y() + 1.0);
+//    return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
+//}
+
 color ray_color(const ray& r, const hittable& world) {
     hit_record rec;
+
     if (world.hit(r, 0, infinity, rec)) {
-        return 0.5 * (rec.normal + color(1, 1, 1));
+        point3 target = rec.p + rec.normal +random_in_unit_sphere();
+        return 0.5 * ray_color(ray(rec.p, target - rec.p), world);
     }
+
     vec3 unit_direction = unit_vector(r.direction());
     auto t = 0.5 * (unit_direction.y() + 1.0);
     return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
