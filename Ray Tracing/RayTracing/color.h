@@ -5,6 +5,8 @@
 
 #include <iostream>
 
-void write_color(std::ostream& out, color pixel_color);
+#include "rtweekend.h"
+
+void write_color(std::ostream& out, color pixel_color, int samples_per_pixel);
 
 #endif
