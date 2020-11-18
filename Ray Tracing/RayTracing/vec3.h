@@ -5,6 +5,8 @@
 #include <iostream>
 #include "rtweekend.h"
 
+#include "rtweekend.h"
+
 using std::sqrt;
 
 class vec3 {
@@ -53,6 +55,15 @@ public:
   
 public:
     double e[3];
+
+     static vec3 random() {
+        return vec3(random_double(), random_double(), random_double());
+    }
+
+     static vec3 random(double min, double max) {
+        return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
+    }
+  
 };
 
 // Type aliases for vec3
@@ -107,5 +118,8 @@ inline vec3 unit_vector(vec3 v) {
 inline vec3 random_in_unit_sphere();
 
 vec3 random_unit_vector();
+
+vec3 random_in_unit_sphere();
+
 
 #endif

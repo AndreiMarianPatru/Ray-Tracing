@@ -44,5 +44,4 @@ inline double clamp(double x, double min, double max) {
 
 
 
-
 #endif
