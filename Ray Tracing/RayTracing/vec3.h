@@ -56,13 +56,7 @@ public:
 public:
     double e[3];
 
-     static vec3 random() {
-        return vec3(random_double(), random_double(), random_double());
-    }
-
-     static vec3 random(double min, double max) {
-        return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
-    }
+     
   
 };
 
